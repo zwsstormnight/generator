@@ -277,6 +277,14 @@ public class DatabaseIntrospector {
                         .getProperty(PropertyRegistry.TABLE_USE_ACTUAL_COLUMN_NAMES))) {
                     introspectedColumn.setJavaProperty(
                             getValidPropertyName(calculatedColumnName));
+                } else if(isTrue(tc
+                        .getProperty(PropertyRegistry.TABLE_USE_UPPER_ACTUAL_COLUMN_NAMES))){
+                    introspectedColumn.setJavaProperty(
+                            getValidPropertyName(calculatedColumnName).toUpperCase());
+                } else if(isTrue(tc
+                        .getProperty(PropertyRegistry.TABLE_USE_LOWER_ACTUAL_COLUMN_NAMES))){
+                    introspectedColumn.setJavaProperty(
+                            getValidPropertyName(calculatedColumnName).toLowerCase());
                 } else if (isTrue(tc
                                 .getProperty(PropertyRegistry.TABLE_USE_COMPOUND_PROPERTY_NAMES))) {
                     sb.setLength(0);
